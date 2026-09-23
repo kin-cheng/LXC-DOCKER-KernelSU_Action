@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
       CCACHE_NOHASHDIR: "true"
       CCACHE_HARDLINK: "true"
       
     steps:
     - name: Checkout 源码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       
     - name: 安装 Python 2.7
       uses: LizardByte/setup-python-action@master
@@ -80,7 +79,7 @@ jobs:
           remove-codeql: 'true'
 
           
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
           path: KernelSU
           fetch-depth: 0
@@ -252,7 +251,7 @@ jobs:
 
     - name: 设置ccache缓存
       if: env.ENABLE_CCACHE == 'true'
-      uses: hendrikmuhs/ccache-action@v1.2
+      uses: hendrikmuhs/ccache-action@v1.2.22
       with:
         key: build-kernel-${{ env.DEVICE }}${{ env.UPLOADNAME }}
         max-size: 2G
