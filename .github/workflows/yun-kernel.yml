@@ -17,7 +17,7 @@ jobs:
       
     steps:
     - name: Checkout 源码
-      uses: actions/checkout@v6
+      uses: actions/checkout@v4
       
     - name: 安装 Python 2.7
       uses: LizardByte/setup-python-action@master
@@ -79,7 +79,7 @@ jobs:
           remove-codeql: 'true'
 
           
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v4
       with:
           path: KernelSU
           fetch-depth: 0
